@@ -51,7 +51,6 @@ export const App = () => {
   };
 
   const onloadMore = () => {
-    setIsLoading(true);
     setPage(prevPage => prevPage + 1);
     scrollOnMoreButton();
   };
@@ -76,7 +75,7 @@ export const App = () => {
   return (
     <>
       <Searchbar onSubmit={formSubmit} />
-      {isLoading ? (
+      {isLoading && images.length === 0 ? (
         <Loader />
       ) : (
         <ImageGallery images={images} openModal={openModal} />
